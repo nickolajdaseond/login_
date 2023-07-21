@@ -1,0 +1,36 @@
+
+<div class="outer">
+<div class="panel">
+ <div class="panel-heading">
+  <i class="material-icons">account_circle</i>
+  <h3 class="font-weight-bold">CUSTOMER LOGIN</h3>
+</div>
+<form class="mat-card" [formGroup]="loginForm" (ngSubmit)="login()">
+<div class="input-container">
+  <span class="material-icons">email</span>
+  <mat-form-field class="input-field">
+    <mat-label class="p-3">EMAIL ID</mat-label>
+    <input  matInput placeholder="pat@example.com" type="text" formControlName="email"  >
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+<div class="input-container">
+  <span class="material-icons">lock</span>
+  <mat-form-field class="intup-field">
+    <mat-label class="p-3">Password</mat-label>
+    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" >
+    <span mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </span>
+  </mat-form-field>
+</div>
+<section class="forget">
+  <mat-checkbox  formControlName="rememberMe" class="forget-margin">Remember me</mat-checkbox>
+  <a id="forget" routerLink="/forget" >Forgot Password?</a>
+</section>
+<div class="login-button-row">
+  <button mat-button (click)="onSubmit()" color="primary">Login</button>
+</div>
+</form>
+</div>
+</div>
